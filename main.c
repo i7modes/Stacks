@@ -50,8 +50,7 @@ int isEmpty(Stack S){
 }
 
 Stack CreateStack(){
-    Stack S;
-    S = (Stack*)malloc(sizeof(Stack));
+    Stack S = (Stack)malloc(sizeof(Stack));
 
     if(S == NULL){
         printf("Out of memory!\n");
