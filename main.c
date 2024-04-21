@@ -50,7 +50,7 @@ int isEmpty(Stack S){
 }
 
 Stack CreateStack(){
-    Stack S = (Stack)malloc(sizeof(Stack));
+    Stack S = (Stack)malloc(sizeof(struct Node));
 
     if(S == NULL){
         printf("Out of memory!\n");
@@ -101,7 +101,7 @@ int Top(Stack S){
 
 void Push(int X, Stack S){
     PtrToNode temp;
-    temp = (Stack)malloc(sizeof(Stack));
+    temp = (Stack)malloc(sizeof(struct Node));
 
     if(temp == NULL){
         printf("Out of memory!\n");
