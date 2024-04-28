@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node* PtrToNode;
+typedef struct Node *PtrToNode;
 typedef PtrToNode Stack;
 
-struct Node {
+struct Node
+{
 
     int Element;
     PtrToNode Next;
-
 };
 
 int isEmpty(Stack);
@@ -20,8 +20,8 @@ int Top(Stack);
 void Push(int X, Stack);
 void DisposeStack(Stack);
 
-
-int main(){
+int main()
+{
 
     Stack myStack = CreateStack();
     Push(1, myStack);
@@ -44,15 +44,17 @@ int main(){
     return 0;
 }
 
-int isEmpty(Stack S){
+int isEmpty(Stack S)
+{
     return S->Next == NULL;
-
 }
 
-Stack CreateStack(){
+Stack CreateStack()
+{
     Stack S = (Stack)malloc(sizeof(struct Node));
 
-    if(S == NULL){
+    if (S == NULL)
+    {
         printf("Out of memory!\n");
         exit(1);
     }
@@ -63,47 +65,56 @@ Stack CreateStack(){
     return S;
 }
 
-void MakeEmpty(Stack S){
-    if(S == NULL){
+void MakeEmpty(Stack S)
+{
+    if (S == NULL)
+    {
         printf("Out of memory!\n");
-
-    } else {
-        while(!isEmpty(S))
+    }
+    else
+    {
+        while (!isEmpty(S))
             Pop(S);
     }
 }
 
-void Pop(Stack S){
+void Pop(Stack S)
+{
     PtrToNode firstCell;
 
-    if(isEmpty(S)){
+    if (isEmpty(S))
+    {
         printf("Empty stack!\n");
-
-    } else {
+    }
+    else
+    {
         firstCell = S->Next;
         S->Next = S->Next->Next;
         free(firstCell);
-
     }
 }
 
-int Top(Stack S){
+int Top(Stack S)
+{
 
-    if(!isEmpty(S)){
+    if (!isEmpty(S))
+    {
         return S->Next->Element;
-
-    } else {
+    }
+    else
+    {
         printf("Empty stack!\n");
         exit(1);
     }
-
 }
 
-void Push(int X, Stack S){
+void Push(int X, Stack S)
+{
     PtrToNode temp;
     temp = (Stack)malloc(sizeof(struct Node));
 
-    if(temp == NULL){
+    if (temp == NULL)
+    {
         printf("Out of memory!\n");
         exit(1);
     }
@@ -111,15 +122,10 @@ void Push(int X, Stack S){
     temp->Element = X;
     temp->Next = S->Next;
     S->Next = temp;
-
 }
 
-void DisposeStack(Stack S){
+void DisposeStack(Stack S)
+{
     MakeEmpty(S);
     free(S);
-
 }
-
-
-
-
